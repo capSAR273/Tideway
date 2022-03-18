@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
     }
 
     public bool PlayerCrouching () {
-        return playerControls.Player.Crouch.triggered;
+        return playerControls.Player.Crouch.IsPressed();
     }
 
     private void PlayerSprinting () {
