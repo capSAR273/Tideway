@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
             if (inputManager.isSprinting)
             {
                 Debug.Log("Sprinting on ground");
-                playerSpeed = 12.0f;
+                playerSpeed = 9.0f;
                 groundedVelocity = move;
                 Debug.Log(groundedVelocity);
                 controller.Move(move * Time.deltaTime * playerSpeed);
@@ -88,9 +88,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Crouching");
             isCrouching = true;
-            playerSpeed = 3.0f;
+            playerSpeed = 2.0f;
             controller.height = originalHeight*0.5f;
-            controller.center = controller.height /2 ;
+            controller.center = originalCenter * 0.5f;
         }
         else if(!inputManager.PlayerCrouching() && isCrouching)
         {
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         }
         var lastHeight = controller.height;
         controller.height = Mathf.Lerp(controller.height, originalHeight, 2 * Time.deltaTime);
-        controller.center = Vector3.Lerp(controller.center, new Vector3(0, originalCenter, 0), 2 * Time.deltaTime);
+        controller.center = Vector3.Lerp(controller.center, new Vector3(0, originalCenter.y, 0), 2 * Time.deltaTime);
         
     }
 }
